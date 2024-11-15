@@ -1,0 +1,82 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             x:Class="CadastroEventos.Views.Cadastro"
+             Title="Cadastro"
+             NavigationPage.HasNavigationBar="False"
+             BackgroundColor="#A7C7E7">
+
+    <VerticalStackLayout VerticalOptions="CenterAndExpand">
+        
+        <VerticalStackLayout>
+            <Label Text="Cadastro de Eventos"
+                   HorizontalTextAlignment="Center"
+                   FontSize="30"
+                   TextColor="DodgerBlue"/>
+        </VerticalStackLayout>
+        
+        <Frame Margin="10"
+               BackgroundColor="#F2F2F2">
+            <VerticalStackLayout Spacing="20">
+
+                <VerticalStackLayout>
+                    <Label Text="Nome do evento"/>
+                    <Entry x:Name="txt_nome_evento"
+                           TextColor="DodgerBlue"/>
+                </VerticalStackLayout>
+
+                <Grid RowDefinitions="*,*" ColumnDefinitions="*,*">
+                    <Label Grid.Row="0" Grid.Column="0"
+                           Text="Inicio"
+                           HorizontalTextAlignment="Center"/>
+
+                    <Label Grid.Row="0" Grid.Column="1"
+                           Text="Termino"
+                           HorizontalTextAlignment="Center"/>
+
+                    <DatePicker Grid.Row="1" Grid.Column="0" 
+                                x:Name="dtpk_inicio"
+                                Format="dd/MM/yyyy"
+                                HorizontalOptions="Center"
+                                DateSelected="dtpk_inicio_DateSelected"
+                                TextColor="DodgerBlue"/>
+
+                    <DatePicker Grid.Row="1" Grid.Column="1"
+                                x:Name="dtpk_termino"
+                                Format="dd/MM/yyyy"
+                                HorizontalOptions="Center"
+                                TextColor="DodgerBlue"/>
+                </Grid>
+
+                <VerticalStackLayout>
+                    <Label Text="Quantidade de participantes"/>
+                    <HorizontalStackLayout Spacing="20">
+                        <Label Text="{Binding Value}"
+                               VerticalTextAlignment="Center"
+                               BindingContext="{x:Reference stp_participantes}"
+                               TextColor="DodgerBlue"/>
+
+                        <Stepper x:Name="stp_participantes"
+                                 Minimum="1"
+                                 Maximum="10"
+                                 Increment="1"/>
+                    </HorizontalStackLayout>
+                </VerticalStackLayout>
+
+                <VerticalStackLayout>
+                    <Label Text="Local do evento"/>
+                    <Picker x:Name="pk_local_evento"
+                            Title="Selecione o local do evento"
+                            ItemDisplayBinding="{Binding NomeLocal}"
+                            TextColor="DodgerBlue"/>
+                </VerticalStackLayout>
+
+                <Button Text="Avançar" Clicked="Button_Clicked"
+                        BackgroundColor="#A7C7E7"
+                        TextColor="Black"
+                        FontAttributes="Bold"/>
+            </VerticalStackLayout>
+        </Frame>
+        
+    </VerticalStackLayout>
+</ContentPage>

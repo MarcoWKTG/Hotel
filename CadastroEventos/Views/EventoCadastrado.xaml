@@ -1,0 +1,86 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             x:Class="CadastroEventos.Views.EventoCadastrado"
+             Title="EventoCadastrado"
+             NavigationPage.HasNavigationBar="False"
+             BackgroundColor="#A7C7E7">
+
+    <ContentPage.Resources>
+        <Style TargetType="Button">
+            <Setter Property="BackgroundColor" Value="#A7C7E7"/>
+            <Setter Property="FontAttributes" Value="Bold"/>
+        </Style>
+
+        <Style TargetType="Frame">
+            <Setter Property="BackgroundColor" Value="#F2F2F2"/>
+        </Style>
+    </ContentPage.Resources>
+
+    <VerticalStackLayout VerticalOptions="CenterAndExpand">
+        <Frame Margin="10">
+            <VerticalStackLayout Spacing="20">
+
+                <VerticalStackLayout>
+                    <Label Text="{Binding NomeEvento}"
+                           HorizontalTextAlignment="Center"
+                           FontAttributes="Bold"
+                           FontSize="30"/>
+                </VerticalStackLayout>
+
+                <VerticalStackLayout>
+                    <Label Text="Local do evento"
+                           FontSize="15"/>
+                    <Label Text="{Binding LocalSelecionado.NomeLocal}"
+                           TextColor="DodgerBlue"/>
+                </VerticalStackLayout>
+
+                <Grid RowDefinitions="*,*" ColumnDefinitions="*,*,*">
+                    <Label Grid.Row="0" Grid.Column="0" 
+                           Text="Inicio"
+                           HorizontalTextAlignment="Center"/>
+                    
+                    <Label Grid.Row="0" Grid.Column="1" 
+                           Text="Termino"
+                           HorizontalTextAlignment="Center"/>
+
+                    <Label Grid.Row="0" Grid.Column="2"
+                           Text="Duração"
+                           HorizontalTextAlignment="Center"/>
+
+                    <Label Grid.Row="1" Grid.Column="0"
+                           Text="{Binding DataInicio, StringFormat='{}{0:dd/MM/yyy}'}"
+                           HorizontalTextAlignment="Center"
+                           TextColor="DodgerBlue"/>
+
+                    <Label Grid.Row="1" Grid.Column="1"
+                           Text="{Binding DataTermino, StringFormat='{}{0:dd/MM/yyyy}'}"
+                           HorizontalTextAlignment="Center"
+                           TextColor="DodgerBlue"/>
+
+                    <Label Grid.Row="1" Grid.Column="2"
+                           Text="{Binding Duracao}"
+                           HorizontalTextAlignment="Center"
+                           TextColor="DodgerBlue"/>
+                </Grid>
+
+                <HorizontalStackLayout>
+                    <Label Text="Número de participantes confirmados:"/>
+                    <Label Text="{Binding QntParticipante}"
+                           TextColor="DodgerBlue"/>
+                </HorizontalStackLayout>
+
+                <HorizontalStackLayout>
+                    <Label Text="Valor Total:"/>
+                    <Label Text="{Binding ValorTotal, StringFormat='{}{0:c}'}"
+                           TextColor="DodgerBlue"/>
+                </HorizontalStackLayout>
+
+                <Button Text="Voltar" Clicked="Button_Clicked"
+                        BackgroundColor="#A7C7E7"
+                        TextColor="Black"
+                        FontAttributes="Bold"/>
+            </VerticalStackLayout>
+        </Frame>
+    </VerticalStackLayout>
+</ContentPage>
